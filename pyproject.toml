@@ -1,0 +1,15 @@
+[project]
+name = "morloc-lexer-bot"
+version = "0.1.0"
+description = "Discord.py bot for syntax highlighting morloc codeblocks"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "discord-py>=2.5.2",
+    "dotenv>=0.9.9",
+    "morloclexer",
+    "pygments>=2.19.2",
+]
+
+[tool.uv.sources]
+morloclexer = { git = "https://github.com/morloc-project/pygmentize" }
