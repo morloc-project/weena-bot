@@ -52,7 +52,7 @@ def main():
         new_message = highlight_morloc_code(message.content)
 
         if new_message != message.content:
-            await message.delete()
+            #  await message.delete()
             await message.channel.send(new_message)
 
     bot.run(os.getenv("BOT_KEY"))
