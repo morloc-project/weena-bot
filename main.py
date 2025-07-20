@@ -22,7 +22,7 @@ def highlight_morloc_code(msg):
                 blocks.append(left2)
                 break
             morloc_code = highlight(left2, MorlocLexer(), TerminalFormatter())
-            blocks.extend(["```", sep, morloc_code, "``````"])
+            blocks.extend(["```ansi\n", morloc_code, "```"])
             msg = right2
     return ''.join(blocks)
 
