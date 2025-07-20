@@ -23,5 +23,4 @@ BOT_TOKEN = "YOUR_DISCORD_BOT_TOKEN"
 
 and then start the project with `uv run main.py` 
 
-
 Bot requires send message permissions in the channels it joins, view history and edit message permissions are also useful if setting the bot to delete reformatted messages
