@@ -10,18 +10,21 @@ def highlight_morloc_code(msg):
     '''
     Highlight all blocks of morloc code
     '''
-
-    block_heads = msg.split("```morloc")
-
-    if(len(block_heads) <= 1):
-        return msg
-
-    for i in range(1,len(block_heads)):
-        (morloc_code, non_morloc_code) = block_heads[i].split("```", maxsplit=1)  
-        morloc_code = highlight(code, MorlocLexer(), TerminalFormatter())
-        block_heads[i] = morloc_code + non_morloc_code 
-
-    return ''.join(block_heads)
+    blocks = []
+    while True:
+        (left, sep, right) = msg.partition("```morloc")
+        blocks.append(left)
+        if not sep:
+            break
+        else:
+            (left2, sep2, right2) = right.partition("```")
+            if not sep2:
+                blocks.append(left2)
+                break
+            morloc_code = highlight(left2, MorlocLexer(), TerminalFormatter())
+            blocks.extend(["```", sep, morloc_code, "``````"])
+            msg = right2
+    return ''.join(blocks)
 
 
 def main():
